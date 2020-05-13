@@ -6,13 +6,9 @@ const router = express.Router();
 
 const notes = require('../model/notes');
 
-// const db = mongoose.connection;
-// console.log('Database info: ');
-
 
 //[Back-end routes]
-
-//Returns data from mongodb to fill checklist
+//Returns data from mongodb to fill checklist notes
 router.get("/", (req, res)=>{
 
     notes.find({ })
@@ -51,23 +47,6 @@ router.delete('/delete/:id', (req, res) => {
     });
 });
 
-// router.delete('/delete', (req, res) => {
-//     const { id } = req.body;
-    
-//     console.log("Received Id: ",req.body.params, objectId(id));
-    
-//     notes.deleteOne({"_id": objectId(id)}, (error, data) => {
-//         console.log("Data found: ");
-//         if (error) {
-//             console.log('Error in deleting!');
-//             throw error;
-//         } else {
-//             console.log('Item has been deleted', data);
-//             res.status(204).json(data);
-//         }
-//     });
-// });
-
 //Function used to clear all notes made by the user
 router.delete('/deleteAll', (req, res) => {
     // const { id } = req.body;
@@ -101,13 +80,13 @@ router.post('/save', (req, res)=>{
     });    
 });
 
-router.get("/notes", (req, res)=>{
-    const data = {
-        username: 'items test page',
-        testNum: 777
-    };
-    res.json(data);
-});
+// router.get("/notes", (req, res)=>{
+//     const data = {
+//         username: 'items test page',
+//         testNum: 777
+//     };
+//     res.json(data);
+// });
 
 
 module.exports = router;
