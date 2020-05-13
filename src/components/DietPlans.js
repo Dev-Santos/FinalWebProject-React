@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 
-import Recipe from './Recipe';
-import FoodSection from './FoodSection';
+// import Recipe from './Recipe';
+// import FoodSection from './FoodSection';
 import '../css/dietplans.css';
 
 
@@ -10,12 +10,13 @@ const DietPage = () => {
     const APP_KEY = "1debc070ab2e7f1a889ec5f8979f4f86";
 
     const [recipes, setRecipes] = useState([]);
-    const [search, setSearch] = useState('');
-    const [query, setQuery] = useState('chicken');
+    // const [search, setSearch] = useState('');
+    // const [query, setQuery] = useState('chicken');
+
 
     useEffect( () => {
         getRecipes();
-    }, [query]);
+    }, [getRecipes]);
 
     const getRecipes = async () => {
         const response = await fetch(`https://api.edamam.com/api/food-database/parser?nutrition-type=Health&ingr=wine&healthLabels=VEGAN&app_id=${APP_ID}&app_key=${APP_KEY}`);

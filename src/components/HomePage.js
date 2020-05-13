@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Recipe from './Recipe';
 import CheckList from './CheckList';
+import axios from 'axios';
 
 import '../css/homepage.css';
 
@@ -11,6 +12,12 @@ const HomePage = () => {
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('');
     const [query, setQuery] = useState('chicken');
+    // const [recipe, addRecipe] = 
+    //   useState({name: '',
+    //   recipe: [],
+    //   calories: '',
+    //   image_url: '',
+    //   totalWeight: ''})
   
     useEffect( () => {
       getRecipes();
@@ -19,7 +26,7 @@ const HomePage = () => {
     const getRecipes = async () => {
       const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
       const data = await response.json();
-      console.log("Data pulled from original API: ", data);
+      // console.log("Data pulled from original API: ", data);
       setRecipes(data.hits);
     };
   
@@ -33,8 +40,32 @@ const HomePage = () => {
       setSearch('');
     };
 
-    const addRecipe = () => {
-      console.log('This is working!!!!');
+    const getRecipe = (recipe) => {
+      const ingredients = JSON.stringify(recipe.recipe.recipe.ingredients);
+      console.log("Recipe data: ", ingredients)
+      const payload = {
+        name: recipe.recipe.recipe.label,
+        recipe: ingredients,
+        calories: recipe.recipe.recipe.calories,
+        image_url: recipe.recipe.recipe.image,
+        totalWeight: recipe.recipe.recipe.totalWeight
+      };
+
+      axios({
+          url: 'http://localhost:8080/api/addRecipe',
+          method: 'POST',
+          data: payload
+      })
+        .then(() => {
+            console.log('Data has been sent to the server', payload);
+            // this.resetUserInputs();
+            // this.getNotes();
+        })
+        .catch(() => {
+            console.log('Internal server error');
+        });
+      // console.log('This is working!!!!');
+      // console.log('Title: ', recipe);
     }
   
     return (    
@@ -46,9 +77,9 @@ const HomePage = () => {
                         <input placeholder="Search for any recipe..." className="search-bar" type="text" value={search} onChange={updateSearch} />
                         <button className="search-button" type="submit">Search</button>
                     </form>     
-                    <div className="">
+                    <div>
                       {recipes.map((recipe, index) => (
-                          <div className="recipes">
+                          <div key={index} className="recipes">
                             <Recipe 
                               key={index}
                               title={recipe.recipe.label} 
@@ -56,7 +87,7 @@ const HomePage = () => {
                               image={recipe.recipe.image}
                               ingredients={recipe.recipe.ingredients}
                             />
-                            <button>Add Recipe</button>
+                            <button onClick={() => getRecipe({recipe})}>Add Recipe</button>
                           </div>
                       ))}
                     </div>

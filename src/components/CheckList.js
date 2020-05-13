@@ -31,7 +31,7 @@ class CheckList extends React.Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({ notes: data });
-                console.log('Data received...', data);
+                console.log('Data received from database');
             })
             .catch(() => {
                 console.log('Error receiving data...');
@@ -64,11 +64,11 @@ class CheckList extends React.Component {
 
     //function used to remove a note from the list
     removeNote(id){
-        console.log("You clicked me...", id);
+        // console.log("You clicked me...", id);
         if(window.confirm("Are you sure about deleting this item?")){
             axios.delete('http://localhost:8080/api/delete/'+id)
             .then(response => {
-                console.log('deleteNote response', response, this.state);
+                console.log('Note was deleted');
                 this.getNotes();
             })
             .catch((error) => {
@@ -119,7 +119,7 @@ class CheckList extends React.Component {
                             type="text"
                             name="newNote"
                             placeholder="Enter item: "
-                            value= {this.state.body}
+                            value={this.state.body}
                             onChange={this.handleChange}
                         />
                         <button type="submit">Add Item</button>
