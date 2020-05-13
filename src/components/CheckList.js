@@ -25,6 +25,7 @@ class CheckList extends React.Component {
         this.setState({ body: value });
     };
 
+    //function used to get notes from mongo database
     getNotes = () => {
         axios.get('http://localhost:8080/api')
             .then((response) => {
@@ -37,6 +38,7 @@ class CheckList extends React.Component {
             });
     };
 
+    //function used to display notes in checklist
     displayNotes = (notes) => {        
         if(!notes.length) return null;
 
