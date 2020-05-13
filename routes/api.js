@@ -6,8 +6,8 @@ const router = express.Router();
 
 const notes = require('../model/notes');
 
-const db = mongoose.connection;
-console.log('Database info: ');
+// const db = mongoose.connection;
+// console.log('Database info: ');
 
 
 //[Back-end routes]
