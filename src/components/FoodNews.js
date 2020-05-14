@@ -19,7 +19,7 @@ class FoodNews extends React.Component {
 
     getArticles = async () => {
         const API_KEY = "8b1c3d56453d44368f69eeff24d5bf4d";
-        axios.get(`http://newsapi.org/v2/everything?q=gourmet&language=en&sortBy=popularity&pageSize=15&apiKey=${API_KEY}`)
+        axios.get(`http://newsapi.org/v2/everything?q=cooking&language=en&sortBy=relevancy&pageSize=10&apiKey=${API_KEY}`)
             .then((response) => {
                 const data = response.data;
                 this.setState({ articles: data.articles });
@@ -40,12 +40,12 @@ class FoodNews extends React.Component {
             return(                       
                 <div key={index} className="articleSection">
                     {/* <h1>HELLELLOOOOO</h1> */}
-                    <h3>{article.title}</h3>
-                    <p>By: {article.author}</p>
-                    <p>Content: {article.content}</p>
-                    <p>Description: {article.description}</p>
-                    <p>Link to Full Article: {article.url}</p>
-                    <img src={article.urlToImage} alt="Could not find image"></img>
+                    <h3 className="title">{article.title}</h3>
+                    <p><b>Written by:</b> {article.author}</p>
+                    <p><b>Content: </b> {article.content}</p>
+                    <p><b>Description: </b> {article.description}</p>
+                    <p><b>Link to Full Article: </b><a href="#"> {article.url}</a></p>
+                    <img className="imagePos center" src={article.urlToImage} alt="N/A"></img>
                 </div>
             )
         });

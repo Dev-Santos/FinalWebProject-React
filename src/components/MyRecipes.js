@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Modal from "react-bootstrap/Modal";
-import ReactDOM from "react-dom";
+// import Modal from "react-bootstrap/Modal";
+// import ReactDOM from "react-dom";
 
 import '../css/myrecipes.css';
 
