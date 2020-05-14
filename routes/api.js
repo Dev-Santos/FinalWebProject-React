@@ -60,7 +60,6 @@ router.delete('/deleteNote/:id', (req, res) => {
     });
 });
 
-
 //Used to delete a single recipe from the mongodb saved recipes
 router.delete('/deleteRecipe/:id', (req, res) => {
   const  id  = req.params.id;
@@ -86,7 +85,6 @@ router.delete('/deleteRecipe/:id', (req, res) => {
   });
 });
 
-
 //Route used to save a note to mongodb
 router.post('/save', (req, res)=>{
     const data = req.body;
@@ -103,10 +101,11 @@ router.post('/save', (req, res)=>{
     });    
 });
 
-
 //Function used to add a recipe to saved recipes
 router.post('/addRecipe', (req, res)=>{
   const data = req.body;
+  title = req.body.name;
+  // console.log("Data being sent: ", title);
 
   const newRecipe = new recipes(data);
   newRecipe.save((error) => {

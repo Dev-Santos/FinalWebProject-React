@@ -27,7 +27,7 @@ class MyRecipes extends React.Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({ recipes: data });
-                console.log('Data received from database', data, this.state.recipes);
+                // console.log('Data received from database', data, this.state.recipes);
             })
             .catch(() => {
                 console.log('Error receiving data...');
@@ -35,7 +35,7 @@ class MyRecipes extends React.Component {
     };
 
     removeRecipe = (id) => {
-        console.log("Id: ", id);
+        // console.log("Id: ", id);
         if(window.confirm("Are you sure about deleting this recipe?")){
             axios.delete('http://localhost:8080/api/deleteRecipe/'+id)
             .then(response => {
@@ -47,38 +47,6 @@ class MyRecipes extends React.Component {
             })
         }
     }
-
-    // editModal = (id) => {
-    //     handleShow;
-    //     const [show, setShow] = useState(false);
-
-    //     const handleClose = () => setShow(false);
-    //     const handleShow = () => setShow(true);
-    //     return (
-    //         <div>
-    //         <>
-    //             <button variant="primary" onClick={handleShow}>
-    //             Launch demo modal
-    //             </button>
-            
-    //             <Modal show={show} onHide={handleClose}>
-    //                 <Modal.Header closeButton>
-    //                     <Modal.Title>Modal heading</Modal.Title>
-    //                 </Modal.Header>
-    //                 <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-    //                 <Modal.Footer>
-    //                     <button variant="secondary" onClick={handleClose}>
-    //                     Close
-    //                     </button>
-    //                     <button variant="primary" onClick={handleClose}>
-    //                     Save Changes
-    //                     </button>
-    //                 </Modal.Footer>
-    //             </Modal>
-    //         </>
-    //         </div>
-    //     );
-    // }
 
     displayRecipies = (recipes) => {        
         if(!recipes.length) return null;

@@ -11,12 +11,14 @@
 
 .articleSection {
     /* background-color: white; */
+    box-shadow: 0px 5px 20px rgb(71, 71, 71);
     background-color: #bf07ac;
     width: 80%;
     margin: 10px auto;
     border: solid;
     padding: 10px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .imagePos {

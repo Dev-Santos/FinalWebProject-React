@@ -1,6 +1,6 @@
 import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {faTrash} from '@fortawesome/free-solid-svg-icons';
+import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FlipMove from 'react-flip-move';
 import axios from 'axios';
@@ -8,6 +8,7 @@ import axios from 'axios';
 import '../css/checklist.css';
 
 library.add(faTrash);
+library.add(faEdit);
 
 class CheckList extends React.Component {
 
@@ -39,6 +40,10 @@ class CheckList extends React.Component {
             });
     };
 
+    editModal = () => {
+
+    }
+
     //function used to display notes in checklist
     displayNotes = (notes) => {        
         if(!notes.length) return null;
@@ -55,6 +60,10 @@ class CheckList extends React.Component {
                                 icon="trash"
                                 onClick={ () => {this.removeNote(note._id)}}                           
                                 />
+                                {/* <FontAwesomeIcon className="faicons" 
+                                icon="edit"
+                                onClick={ () => {this.editModal(note._id)}}                     
+                                /> */}
                             </span>
                         </li>
                     </p>
