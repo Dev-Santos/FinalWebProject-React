@@ -1,7 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import '../css/myrecipes.css';
+
+library.add(faTrash);
+library.add(faEdit);
 
 class MyRecipes extends React.Component {
 
@@ -26,6 +32,20 @@ class MyRecipes extends React.Component {
             });
     };
 
+    removeRecipe = (id) => {
+        console.log("Id: ", id);
+        if(window.confirm("Are you sure about deleting this recipe?")){
+            axios.delete('http://localhost:8080/api/deleteRecipe/'+id)
+            .then(response => {
+                console.log('Recipe was deleted');
+                this.getRecipes();
+            })
+            .catch((error) => {
+                console.log("Error deleting...", error);
+            })
+        }
+    }
+
     displayRecipies = (recipes) => {        
         if(!recipes.length) return null;
 
@@ -33,11 +53,23 @@ class MyRecipes extends React.Component {
             return(         
                        
                 <div key={index} className="section">
-                    <h3 className="name">{recipe.name}</h3>
-                    <p className="recipe">Recipe: <br />{recipe.recipe}</p>
-                    <p className="calories">Calories: {recipe.calories} | Weight: {recipe.totalWeight}</p>
-                    
-                    <img className="image" src={recipe.image_url} alt="..."></img>                            
+                    <div className="recipeSection">
+                        <h3 className="name">{recipe.name}</h3>
+                        <p className="recipe">Recipe: <br />{recipe.recipe}</p>
+                        <p className="calories">Calories: {recipe.calories} | Weight: {recipe.totalWeight}</p>
+                        
+                        <img className="image" src={recipe.image_url} alt="..."></img>
+                        <span className="buttons">
+                            <FontAwesomeIcon className="faicons" 
+                            icon="trash"
+                            onClick={ () => {this.removeRecipe(recipe._id)}}                           
+                            />
+                            <FontAwesomeIcon className="faicons" 
+                            icon="edit"
+                            // onClick={ () => {this.removeNote(note._id)}}                           
+                            />
+                        </span>
+                    </div>
                 </div>
             )
         });

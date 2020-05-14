@@ -1,10 +1,11 @@
 import React from 'react';
-import '../css/checklist.css';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FlipMove from 'react-flip-move';
 import axios from 'axios';
+
+import '../css/checklist.css';
 
 library.add(faTrash);
 

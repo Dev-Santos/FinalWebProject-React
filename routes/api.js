@@ -60,22 +60,33 @@ router.delete('/delete/:id', (req, res) => {
     });
 });
 
-//Function used to clear all notes made by the user
-// router.delete('/deleteAll', (req, res) => {
-//     // const { id } = req.body;
-//     const data = req.body;
 
-//     notes.deleteAll = (error, data) => {
-//         console.log("Data found: ", data);
-//         if (error) {
-//             console.log('Error in deleting!');
-//             throw error;
-//         } else {
-//             console.log('Item has been deleted');
-//             res.status(204).json(data);
-//         }
-//     };
-// });
+//Used to delete a single recipe from the mongodb saved recipes
+router.delete('/deleteRecipe/:id', (req, res) => {
+  const  id  = req.params.id;
+  
+  // console.log("Received Id: ",id, objectId(id));
+  
+  recipes.findByIdAndRemove(id)
+  .then(data => {
+    if (!data) {
+      res.status(404).send({
+        message: `Cannot delete recipe with id=${id}. Maybe recipe was not found!`
+      });
+    } else {
+      res.send({
+        message: "Recipe was deleted successfully!"
+      });
+    }
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: "Could not delete recipe with id=" + id
+    });
+  });
+});
+
+
 
 //Route used to save a note to mongodb
 router.post('/save', (req, res)=>{
@@ -109,14 +120,5 @@ router.post('/addRecipe', (req, res)=>{
       });
   });    
 });
-
-// router.get("/notes", (req, res)=>{
-//     const data = {
-//         username: 'items test page',
-//         testNum: 777
-//     };
-//     res.json(data);
-// });
-
 
 module.exports = router;
