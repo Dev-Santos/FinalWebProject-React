@@ -10,7 +10,7 @@ const recipes = require('../model/recipes');
 
 //[Back-end routes]
 //Returns data from mongodb to fill checklist notes
-router.get("/", (req, res)=>{
+router.get("/notes", (req, res)=>{
 
     notes.find({ })
         .then((data) => {
@@ -36,7 +36,7 @@ router.get("/myrecipes", (req, res)=>{
 });
 
 //Used to delete a single note from the mongodb notes
-router.delete('/delete/:id', (req, res) => {
+router.delete('/deleteNote/:id', (req, res) => {
     const  id  = req.params.id;
     
     // console.log("Received Id: ",id, objectId(id));
@@ -85,7 +85,6 @@ router.delete('/deleteRecipe/:id', (req, res) => {
     });
   });
 });
-
 
 
 //Route used to save a note to mongodb

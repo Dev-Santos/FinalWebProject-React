@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import '../css/foodnews.css';
+
 class FoodNews extends React.Component {
 
     state = {
@@ -17,12 +19,12 @@ class FoodNews extends React.Component {
 
     getArticles = async () => {
         const API_KEY = "8b1c3d56453d44368f69eeff24d5bf4d";
-        axios.get(`http://newsapi.org/v2/everything?q=gourmet&sortBy=publishedAt&pageSize=10&apiKey=${API_KEY}`)
+        axios.get(`http://newsapi.org/v2/everything?q=gourmet&language=en&sortBy=popularity&pageSize=15&apiKey=${API_KEY}`)
             .then((response) => {
                 const data = response.data;
-                this.setState({ articles: data });
-                console.log('Data received from News API: ',  this.state.articles);
-                this.displayArticles(data);
+                this.setState({ articles: data.articles });
+                // console.log('Data received from News API: ',  this.state.articles, data.articles);
+                // this.displayArticles(data);
             })
             .catch(() => {
                 console.log('Error receiving data...');
@@ -32,13 +34,18 @@ class FoodNews extends React.Component {
     displayArticles = (articles) => {
         // console.log("Function data: ", articles);
         if(!articles.length) return null;
-
+        
         return articles.map((article, index) => {
             // console.log("Function12345t data2: ", article);
             return(                       
                 <div key={index} className="articleSection">
-                    <h1>HELLELLOOOOO</h1>
-                    <p>Author: {article.articles.author}</p>
+                    {/* <h1>HELLELLOOOOO</h1> */}
+                    <h3>{article.title}</h3>
+                    <p>By: {article.author}</p>
+                    <p>Content: {article.content}</p>
+                    <p>Description: {article.description}</p>
+                    <p>Link to Full Article: {article.url}</p>
+                    <img src={article.urlToImage} alt="Could not find image"></img>
                 </div>
             )
         });
@@ -48,12 +55,11 @@ class FoodNews extends React.Component {
     render(){
         return (
             
-                <div className="NewsSection">
-                    <h1> HHEHDHKLNIOSKCOIK</h1>
-                    {this.displayArticles(this.state.articles)}
-                </div>
+            <div className="NewsSection">
+                <h3 className="pageHeader">Food News Articles</h3>
+                {this.displayArticles(this.state.articles)}
+            </div>
             
-            // <h1>Food News Page</h1>
         )
     }
 }

@@ -79,8 +79,9 @@ const HomePage = () => {
   
     return (    
       <div className="HomePage">
+        <h3 className="pageHeader">Search for any recipe and make your own collection</h3>
         <div className="container">   
-            <div className="row">  
+            <div className="row">                
                 <div className="col-md-9 col-sm-8 col-xs-8">
                     <form onSubmit={getSearch} className="search-form">
                         <input placeholder="Search for any recipe..." className="search-bar" type="text" value={search} onChange={updateSearch} />

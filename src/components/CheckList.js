@@ -28,7 +28,7 @@ class CheckList extends React.Component {
 
     //function used to get notes from mongo database
     getNotes = () => {
-        axios.get('http://localhost:8080/api')
+        axios.get('http://localhost:8080/api/notes')
             .then((response) => {
                 const data = response.data;
                 this.setState({ notes: data });
@@ -67,7 +67,7 @@ class CheckList extends React.Component {
     removeNote(id){
         // console.log("You clicked me...", id);
         if(window.confirm("Are you sure about deleting this item?")){
-            axios.delete('http://localhost:8080/api/delete/'+id)
+            axios.delete('http://localhost:8080/api/deleteNote/'+id)
             .then(response => {
                 console.log('Note was deleted');
                 this.getNotes();

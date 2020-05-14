@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {faTrash, faEdit} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Modal from "react-bootstrap/Modal";
+import ReactDOM from "react-dom";
 
 import '../css/myrecipes.css';
 
@@ -46,6 +48,38 @@ class MyRecipes extends React.Component {
         }
     }
 
+    // editModal = (id) => {
+    //     handleShow;
+    //     const [show, setShow] = useState(false);
+
+    //     const handleClose = () => setShow(false);
+    //     const handleShow = () => setShow(true);
+    //     return (
+    //         <div>
+    //         <>
+    //             <button variant="primary" onClick={handleShow}>
+    //             Launch demo modal
+    //             </button>
+            
+    //             <Modal show={show} onHide={handleClose}>
+    //                 <Modal.Header closeButton>
+    //                     <Modal.Title>Modal heading</Modal.Title>
+    //                 </Modal.Header>
+    //                 <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+    //                 <Modal.Footer>
+    //                     <button variant="secondary" onClick={handleClose}>
+    //                     Close
+    //                     </button>
+    //                     <button variant="primary" onClick={handleClose}>
+    //                     Save Changes
+    //                     </button>
+    //                 </Modal.Footer>
+    //             </Modal>
+    //         </>
+    //         </div>
+    //     );
+    // }
+
     displayRecipies = (recipes) => {        
         if(!recipes.length) return null;
 
@@ -66,7 +100,7 @@ class MyRecipes extends React.Component {
                             />
                             <FontAwesomeIcon className="faicons" 
                             icon="edit"
-                            // onClick={ () => {this.removeNote(note._id)}}                           
+                            // onClick={ () => {this.editModal(recipe._id)}}                         
                             />
                         </span>
                     </div>
