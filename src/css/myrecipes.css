@@ -1,0 +1,50 @@
+body {
+    background-color: #9266ff;
+}
+
+.pageTitle {
+    text-align: center;
+    padding: 20px;
+    text-decoration: underline;
+    /* color: aqua; */
+}
+
+.section {
+    padding: 10px;
+    color: white;
+    max-width: 70%;
+    background-color: #bf07ac;
+    height: auto;
+    min-height: 40px;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+.section img {
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.name {
+    text-align: center;
+}
+
+.recipe {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.calories {
+    text-align: center;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

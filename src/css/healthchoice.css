@@ -1,0 +1,32 @@
+.Item {
+    padding: 10px;
+    color: white;
+    background-color: #bf07ac;
+    height: auto;
+    width: 80%;
+    min-height: 40px;
+    margin: 20px auto;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+
+
+.header {
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.search-form2 {
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.Item img {
+    width: 100px;
+    height: 100px;
+}
+
+.foodSection {
+    width: 100%
+}

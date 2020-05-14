@@ -8,7 +8,7 @@ import HomePage from './components/HomePage';
 import MyRecipes from './components/MyRecipes';
 import AddRecipe from './components/AddRecipe';
 import FoodNews from './components/FoodNews';
-import DietPlans from './components/DietPlans';
+import HealthChoice from './components/HealthChoice';
 import Login from './components/Login';
 
 //Imported CSS Files
@@ -32,7 +32,7 @@ class App extends React.Component {
 
             <Route path={"/foodnews"} exact component={FoodNews}/>
 
-            <Route path={"/healthchoices"} exact component={DietPlans}/>
+            <Route path={"/healthchoices"} exact component={HealthChoice}/>
 
             <Route path={"/myrecipes"} exact component={MyRecipes}/>
 

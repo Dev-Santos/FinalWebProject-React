@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import '../css/myrecipes.css';
+
 class MyRecipes extends React.Component {
 
     state = {
@@ -24,13 +26,30 @@ class MyRecipes extends React.Component {
             });
     };
 
+    displayRecipies = (recipes) => {        
+        if(!recipes.length) return null;
+
+        return recipes.map((recipe, index) => {
+            return(         
+                       
+                <div key={index} className="section">
+                    <h3 className="name">{recipe.name}</h3>
+                    <p className="recipe">Recipe: <br />{recipe.recipe}</p>
+                    <p className="calories">Calories: {recipe.calories} | Weight: {recipe.totalWeight}</p>
+                    
+                    <img className="image" src={recipe.image_url} alt="..."></img>                            
+                </div>
+            )
+        });
+    };
+
     render(){
         return (
             <div>
                 {/* {(this.state.recipes).map(recipe) => ( */}
-                    <div>
-                        <h1>My Recipes Page</h1>
-                        {/* <p>{this.state.recipes}</p> */}
+                    <h1 className="pageTitle">Personal Recipe Collection</h1>
+                    <div>                        
+                        {this.displayRecipies(this.state.recipes)}
                     </div>
                 {/* // )} */}
             </div>

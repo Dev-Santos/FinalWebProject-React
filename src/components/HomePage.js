@@ -40,15 +40,26 @@ const HomePage = () => {
       setSearch('');
     };
 
+    const arrToString = (recipe) => {
+      var string = '';
+      recipe.map((line, index) => {
+        string += '\n'+(index+1)+'. '+line.text+',';
+      })
+      return string;
+    }
+
     const getRecipe = (recipe) => {
-      const ingredients = JSON.stringify(recipe.recipe.recipe.ingredients);
-      console.log("Recipe data: ", ingredients)
+      // const ingredients = JSON.stringify(recipe.recipe.recipe.ingredients);
+      const ingredients = arrToString(recipe.recipe.recipe.ingredients);
+      
+      console.log("Recipe data: ", ingredients);
+      // console.log("Recipe data2: ", ingr);
       const payload = {
         name: recipe.recipe.recipe.label,
         recipe: ingredients,
-        calories: recipe.recipe.recipe.calories,
+        calories: recipe.recipe.recipe.calories.toFixed(0),
         image_url: recipe.recipe.recipe.image,
-        totalWeight: recipe.recipe.recipe.totalWeight
+        totalWeight: recipe.recipe.recipe.totalWeight.toFixed(0)
       };
 
       axios({
@@ -64,8 +75,6 @@ const HomePage = () => {
         .catch(() => {
             console.log('Internal server error');
         });
-      // console.log('This is working!!!!');
-      // console.log('Title: ', recipe);
     }
   
     return (    
