@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
     Collapse,
@@ -9,7 +9,7 @@ import {
     NavItem,
     NavLink,
   } from 'reactstrap';
-  import { useHistory } from 'react-router-dom';
+//   import { useHistory } from 'react-router-dom';
 
 
 class AppNavbar extends React.Component {
@@ -60,7 +60,7 @@ class AppNavbar extends React.Component {
                 {/* <NavItem>
                     <NavLink href="/">Logout</NavLink>
                 </NavItem> */}
-                <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                <a href="/" onClick={this.logOut.bind(this)} className="nav-link">
                     Logout
                 </a>
             </Nav>

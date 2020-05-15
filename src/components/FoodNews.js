@@ -44,7 +44,7 @@ class FoodNews extends React.Component {
                     <p><b>Written by:</b> {article.author}</p>
                     <p><b>Content: </b> {article.content}</p>
                     <p><b>Description: </b> {article.description}</p>
-                    <p><b>Link to Full Article: </b><a href="#"> {article.url}</a></p>
+                    <p><b>Link to Full Article: </b><a href="/foodnews"> {article.url}</a></p>
                     <img className="imagePos center" src={article.urlToImage} alt="N/A"></img>
                 </div>
             )
