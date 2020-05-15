@@ -10,6 +10,9 @@
     /* max-width: 300px; */
     padding: 10px;
 }
+.container {
+    padding-bottom: 20px;
+}
 
 .pageHeader {
     margin: 1em 0 0.5em 0;

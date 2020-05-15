@@ -1,0 +1,18 @@
+/* .pageDetails {
+    min-height: 100vh;
+} */
+/* .pageDetails {
+    min-height: 80vh;
+} */
+
+.form {
+    border-radius: 10px;
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    background-color: rgb(253, 253, 203);
+}
+
+.signup {
+    padding: 10px;
+}

@@ -9,84 +9,104 @@ import {
     NavItem,
     NavLink,
   } from 'reactstrap';
+  import { useHistory } from 'react-router-dom';
 
-// import axios from 'axios';
 
-const AppNavbar = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
+class AppNavbar extends React.Component {
 
-    // const [name, setName] = useState('');
+    constructor(props){
+        super(props)        
 
-    // //Store name to the state of the component
-    // const changeName = (e) => {
-    //     setName(e.target.value);
-    // }
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false,
+            navCollapsed: true,
+            showNavbar: false,
+            loggedIn: false
+        }
+        // this.logOut = this.logOut.bind(this);
+    }
 
-    // //Submit name to the backend
-    // const submitName = () => {
+    toggle = () => {
+        this.setState({ isOpen: !this.state.isOpen });
+    }
 
-    //     //Headers
-    //     const config = {
-    //         headers: {
-    //             "Content-type" : "application/json" 
-    //         }
-    //     };
+    logOut(e){
+        // const history = useHistory();
+        e.preventDefault();
+        localStorage.removeItem('usertoken');
+        this.setState({ loggedIn: false })
+        window.location.reload(false);
+        // this.props.history.push('/');
+    }
 
-    //     //Create request body
-    //     const body = JSON.stringify({name});
+    
+
+    render(){
         
-    //     //Access the backend api (Express & Nodejs) (in the server.js file) to send user information from the database
-    //     axios.post('/', body, config)
-    //     .then(res => {
-    //         console.log(res.data); 
-    //     })
-    //     .catch(err => { //If an error is caught
-    //        console.log(err);
-    //     });
+        const loginRegLink = (
+            <Nav className="mr-0" navbar>
+                <NavItem>
+                    <NavLink href="/login">Login</NavLink>
+                </NavItem>
+            </Nav>
+        )
 
-    // }
+        const userLink = (
+            <Nav className="mr-0" navbar>
+                <NavItem>
+                    <NavLink href="/profile">Profile</NavLink>
+                </NavItem>
+                {/* <NavItem>
+                    <NavLink href="/">Logout</NavLink>
+                </NavItem> */}
+                <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                    Logout
+                </a>
+            </Nav>
+        )        
 
-    const toggle = () => setIsOpen(!isOpen);
-
-    return (
-        <div>
-            <Navbar color="dark" dark expand="md">
-                <NavbarBrand href="/">React-Recipes</NavbarBrand>
-                <NavbarToggler onClick={toggle} />
-                <Collapse isOpen={isOpen} navbar>
-                <Nav className="mr-auto" navbar>
-                    <NavItem>
-                        <NavLink href="/home">Home</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/foodnews">Food News</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/healthchoices">Health Choices</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/myrecipes">My Recipes</NavLink>
-                    </NavItem>
-                    <NavItem>
-                        <NavLink href="/addRecipe">Add Recipe</NavLink>
-                    </NavItem>                    
-                </Nav>
-                <Nav className="mr-0" navbar>
-                    <NavItem>
-                        <NavLink href="/login">Login/Sign-up</NavLink>
-                    </NavItem>
-                </Nav>
-                {/* <Nav className="mr-0" navbar>
-                    <NavItem>
-                        <input placeholder="Enter name" className="search-bar" type="text" onChange={changeName}/>
-                        <button className="search-button" type="submit" onClick={submitName}>Add Record</button>
-                    </NavItem>
-                </Nav> */}
-                
-                </Collapse>
-            </Navbar>          
-        </div>
-    );
+        return (
+            <div>
+                <Navbar color="dark" dark expand="md">
+                    <NavbarBrand href="/">React-Recipes</NavbarBrand>
+                    <NavbarToggler onClick={this.toggle} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink href="/home">Home</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/foodnews">Food News</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/healthchoices">Health Choices</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/myrecipes">My Recipes</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/addRecipe">Add Recipe</NavLink>
+                        </NavItem>                    
+                    </Nav>
+                    {localStorage.usertoken ? userLink : loginRegLink}
+                    {/* <Nav className="mr-0" navbar>
+                        <NavItem>
+                            <NavLink href="/login">Login</NavLink>
+                        </NavItem>
+                    </Nav> */}
+                    {/* <Nav className="mr-0" navbar>
+                        <NavItem>
+                            <input placeholder="Enter name" className="search-bar" type="text" onChange={changeName}/>
+                            <button className="search-button" type="submit" onClick={submitName}>Add Record</button>
+                        </NavItem>
+                    </Nav> */}
+                    
+                    </Collapse>
+                </Navbar>          
+            </div>
+        );
+    }
 }
 
 export default AppNavbar;

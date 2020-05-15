@@ -10,6 +10,8 @@ import AddRecipe from './components/AddRecipe';
 import FoodNews from './components/FoodNews';
 import HealthChoice from './components/HealthChoice';
 import Login from './components/Login';
+import Register from './components/Register';
+import Profile from './components/Profile';
 
 //Imported CSS Files
 import './App.css';
@@ -21,7 +23,7 @@ class App extends React.Component {
 
     //JSX
     return (    
-      <div>
+      <div className="App">
         <Router>
 
           <AppNavbar/>
@@ -40,7 +42,9 @@ class App extends React.Component {
 
             <Route path={"/login"} exact component={Login}/>
 
-            {/* <Route path={"/signup"} exact component={HomePage}/> */}
+            <Route path={"/register"} exact component={Register}/>
+
+            <Route path={"/profile"} exact component={Profile}/>
 
           </Switch>
           

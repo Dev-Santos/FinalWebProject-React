@@ -54,12 +54,12 @@ class FoodNews extends React.Component {
 
     render(){
         return (
-            
-            <div className="NewsSection">
-                <h3 className="pageHeader">Food News Articles</h3>
-                {this.displayArticles(this.state.articles)}
+            <div>
+                <div className="NewsSection">
+                    <h3 className="pageHeader">Food News Articles</h3>
+                    {this.displayArticles(this.state.articles)}
+                </div>
             </div>
-            
         )
     }
 }
