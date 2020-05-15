@@ -64,8 +64,6 @@ router.delete('/deleteNote/:id', (req, res) => {
 router.delete('/deleteRecipe/:id', (req, res) => {
   const  id  = req.params.id;
   
-  // console.log("Received Id: ",id, objectId(id));
-  
   recipes.findByIdAndRemove(id)
   .then(data => {
     if (!data) {
@@ -84,6 +82,27 @@ router.delete('/deleteRecipe/:id', (req, res) => {
     });
   });
 });
+
+
+//Route to update a note
+// router.update('/update/:id', (req, res) => {
+//   const id = req.params.id;
+
+//   console.log("ID: ", id);
+  // notes.findByIdAndUpdate(id, req.body)
+  //   .then(data => {
+  //     if(!data){
+  //       res.status(404).send({
+  //         message: `Cannot update note with id=${id}. Maybe note was not found!`
+  //       });
+  //     }else res.send({ message: "Note was updated successfully." });
+  //   })
+  //   .catch(err => {
+  //     res.status(500).send({
+  //       message: "Error updating note with id=" + id
+  //     });
+  //   });
+// });
 
 //Route used to save a note to mongodb
 router.post('/save', (req, res)=>{
@@ -104,8 +123,6 @@ router.post('/save', (req, res)=>{
 //Function used to add a recipe to saved recipes
 router.post('/addRecipe', (req, res)=>{
   const data = req.body;
-  title = req.body.name;
-  // console.log("Data being sent: ", title);
 
   const newRecipe = new recipes(data);
   newRecipe.save((error) => {

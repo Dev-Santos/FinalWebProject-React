@@ -5,12 +5,13 @@ import React, { useEffect, useState } from 'react';
 import '../css/healthchoice.css';
 
 
-const DietPage = () => {
+const HealthChoice = () => {
     const APP_ID = "e625b8c1";
     const APP_KEY = "1debc070ab2e7f1a889ec5f8979f4f86";
 
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('');
+    // const [ingredients, setIngridients] = useState([]);
     const [query, setQuery] = useState('red');
     // const [nutrients, displayNutrients] = useState([]);
 
@@ -21,8 +22,10 @@ const DietPage = () => {
     const getRecipes = async () => {
         const response = await fetch(`https://api.edamam.com/api/food-database/parser?nutrition-type=Health&ingr=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
         const data = await response.json();
-        console.log("Data pulled from new API: ", data.hints);
+        // console.log("Data pulled from new API: ", data.hints);
         setRecipes(data.hints);
+        // setNutrients(data.hints);
+        // console.log("EEEEE: ",ingredients);
     };
 
     const updateSearch = e => {
@@ -35,28 +38,36 @@ const DietPage = () => {
         setSearch('');
     };
 
-    // const setNutrients = e = => {
-    //     displayNutrients(e);
+    // const setNutrients = (recipes) => {
+    //     recipes.map((recipes) => {
+    //         var ingredient = recipes.food.nutrients;
+    //         // console.log("IIIIIII: ", ingredient);
+    //         ingredients.push(ingredient);
+    //     })
+    //     // displayNutrients();
     // };
 
-    const displayNutrients = (nutrients) => {        
-        if(!nutrients.length) return null;
+    // const displayNutrients = () => {        
+    //     if(!ingredients.length) return null;
 
-        console.log("Nutrients data: ", nutrients);
+    //     // console.log("Nutrients data: ", ingredients);
+    //     var list = '';
         
-        return recipes.map((nutrient, index) => {
-            return(         
+    //     return ingredients.map((nutrient, index) => {
+    //         // console.log("OOOOO: ", nutrient);
+    //         return(         
                        
-                <div key={index} className="nutrientSection">
-                    <p>{nutrient}</p>
-                    {/* <p className="recipe">Recipe: <br />{recipe.recipe}</p> */}
-                    {/* <p className="calories">Calories: {recipe.calories} | Weight: {recipe.totalWeight}</p> */}
-                    {/* <p>Nutrients:  </p>                     */}
-                    {/* <img className="image" src={recipe.image_url} alt="..."></img>                             */}
-                </div>
-            )
-        });
-    };
+    //             <div key={index} className="nutrientSection">
+    //                 {list = JSON.stringify(nutrient)}
+    //                 <p>{list}</p>
+    //                 {/* <p className="recipe">Recipe: <br />{recipe.recipe}</p> */}
+    //                 {/* <p className="calories">Calories: {recipe.calories} | Weight: {recipe.totalWeight}</p> */}
+    //                 {/* <p>Nutrients:  </p>                     */}
+    //                 {/* <img className="image" src={recipe.image_url} alt="..."></img>                             */}
+    //             </div>
+    //         )
+    //     });
+    // };
 
     return (
         <div className="HealthChoice">
@@ -72,18 +83,18 @@ const DietPage = () => {
                             
                             <div className="Item" key={index}>
                                 {/* <p>key = {recipe.food.foodId}</p> */}
-                                <h3 className="header">{recipe.food.label}</h3>
+                                <h3 className="title">{recipe.food.label}</h3>
                                 {/* <p>id = {recipe.food.foodId}</p> */}
                                 {/* <p>brand = {recipe.food.brand}</p> */}
                                 <p>Category: {recipe.food.category}</p>
                                 <p>CategoryLabel: {recipe.food.categoryLabel}</p>
-                                <p>Nutrients:  </p>
+                                {/* <p>Nutrients:  </p> */}
                                 {/* {recipe.food.nutrients.map((recipe, index) => {
                                     return <li key={index}>{recipe.nutrients}</li>
                                 })} */}
-                                <div>
-                                    {displayNutrients(recipe.food.nutrients)}
-                                </div>
+                                {/* <div>
+                                    {displayNutrients()}
+                                </div> */}
                                 
                                 <img className="image" src={recipe.food.image} alt="..."></img>                                
                                 {/* <p>nutrients = {recipe.food.nutrients}</p> */}
@@ -106,12 +117,4 @@ const DietPage = () => {
     );
 };
 
-// class FoodTrends extends React.Component {
-//     render(){
-//         return (
-//             <h1>FoodTrends Page</h1>
-//         )
-//     }
-// }
-
-export default DietPage;
+export default HealthChoice;

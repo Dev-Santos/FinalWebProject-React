@@ -9,11 +9,11 @@ class AddRecipe extends React.Component {
     submit = (event) => {
         event.preventDefault();
 
-        console.log("Eveent name: ", event.target.elements.name.value);
-        console.log("Eveent recipe: ", event.target.elements.recipe.value);
-        console.log("Eveent calories: ", event.target.elements.calories.value);
-        console.log("Eveent weight: ", event.target.elements.weight.value);
-        console.log("Eveent url: ", event.target.elements.image_url.value);
+        // console.log("Eveent name: ", event.target.elements.name.value);
+        // console.log("Eveent recipe: ", event.target.elements.recipe.value);
+        // console.log("Eveent calories: ", event.target.elements.calories.value);
+        // console.log("Eveent weight: ", event.target.elements.weight.value);
+        // console.log("Eveent url: ", event.target.elements.image_url.value);
 
         const payload = {
             name: event.target.elements.name.value,
@@ -23,7 +23,7 @@ class AddRecipe extends React.Component {
             totalWeight: event.target.elements.image_url.value
         };
 
-        console.log("Payload: ", payload);
+        // console.log("Payload: ", payload);
 
         axios({
             url: 'http://localhost:8080/api/save',

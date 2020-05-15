@@ -33,7 +33,7 @@ class CheckList extends React.Component {
             .then((response) => {
                 const data = response.data;
                 this.setState({ notes: data });
-                console.log('Data received from database');
+                // console.log('Data received from database');
             })
             .catch(() => {
                 console.log('Error receiving data...');
@@ -90,6 +90,8 @@ class CheckList extends React.Component {
     //function used to add notes to the checklist
     submit = (event) => {
         event.preventDefault();
+
+        if(this.state.body === '') return null;
 
         const payload = {
             body: this.state.body

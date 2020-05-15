@@ -12,12 +12,6 @@ const HomePage = () => {
     const [recipes, setRecipes] = useState([]);
     const [search, setSearch] = useState('');
     const [query, setQuery] = useState('chicken');
-    // const [recipe, addRecipe] = 
-    //   useState({name: '',
-    //   recipe: [],
-    //   calories: '',
-    //   image_url: '',
-    //   totalWeight: ''})
   
     useEffect( () => {
       getRecipes();
@@ -52,8 +46,6 @@ const HomePage = () => {
       // const ingredients = JSON.stringify(recipe.recipe.recipe.ingredients);
       const ingredients = arrToString(recipe.recipe.recipe.ingredients);
       
-      console.log("Recipe data: ", ingredients);
-      // console.log("Recipe data2: ", ingr);
       const payload = {
         name: recipe.recipe.recipe.label,
         recipe: ingredients,
@@ -68,9 +60,7 @@ const HomePage = () => {
           data: payload
       })
         .then(() => {
-            console.log('Data has been sent to the server', payload);
-            // this.resetUserInputs();
-            // this.getNotes();
+            console.log('Data has been sent to the server');
         })
         .catch(() => {
             console.log('Internal server error');
