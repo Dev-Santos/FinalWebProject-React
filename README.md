@@ -1,13 +1,29 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### To run the system on your localhost
+navigate into the react-application folder in your terminal (Type: [cd react-application] if in the outside folder)
+Once in the react-application file
+Type: npm start
+which will start the front-end and back-end at the same time 
+
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm run dev`
+
+Runs the app in the development mode.<br />
+[http://localhost:3000](http://localhost:3000) 
+
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Concurrently opens the front-end:
+[http://localhost:3000](http://localhost:3000) 
+to view it in the browser.
+AND the server back-end:
+[http://localhost:8080/]
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.

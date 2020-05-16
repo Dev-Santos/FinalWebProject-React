@@ -179,7 +179,7 @@ router.delete('/deleteRecipe/:id', (req, res) => {
 
 
 //Route to update a note
-router.post('/update/:id', (req, res) => {
+router.put('/update/:id', (req, res) => {
   const id = req.params.id;
 
   console.log("ID: ", id);
