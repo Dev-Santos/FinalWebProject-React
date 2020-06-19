@@ -1,3 +1,5 @@
+Website used to get a wide range of cooking recipes. The user can create their own recipes or create a collection of recipes which they found online.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### To run the system on your localhost
